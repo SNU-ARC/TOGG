@@ -16,7 +16,7 @@ void set_para(std::string dataset, efanna2e::Parameters &parameters) {
     }else if (dataset == "audio") {
         L = 100, R = 50, A = 60;   // nsg
     }else if (dataset == "crawl") {
-        L = 100, R = 50, A = 60;   // nsg
+        L = 500, R = 40, A = 60;   // nsg
     }else if (dataset == "deep1M") {
         L = 500, R = 40, A = 60;   // nsg
     }else if (dataset == "msong") {
