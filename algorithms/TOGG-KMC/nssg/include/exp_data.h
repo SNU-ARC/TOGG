@@ -17,6 +17,8 @@ void set_para(std::string dataset, efanna2e::Parameters &parameters) {
         L = 100, R = 50, A = 60;   // nsg
     }else if (dataset == "crawl") {
         L = 100, R = 50, A = 60;   // nsg
+    }else if (dataset == "deep1M") {
+        L = 500, R = 40, A = 60;   // nsg
     }else if (dataset == "msong") {
         L = 100, R = 50, A = 60;   // nsg
     }else if (dataset == "uqv") {
@@ -47,7 +49,7 @@ void set_para(std::string dataset, efanna2e::Parameters &parameters) {
         std::cout << "input dataset error!\n";
         exit(-1);
     }
-    std::string nn_graph_path("/ddisk/wmz/TOGG/algorithms/GA/efanna_graph/build/tests/" + dataset + "_knn.graph");
+    std::string nn_graph_path("../../../../GA/efanna_graph/build/tests/" + dataset + "_knn.graph");
     parameters.Set<unsigned>("L", L);
     parameters.Set<unsigned>("R", R);
     parameters.Set<unsigned>("A", A);
@@ -57,7 +59,7 @@ void set_para(std::string dataset, efanna2e::Parameters &parameters) {
 
 void set_data_path(std::string dataset, std::string &base_path, std::string &query_path, std::string &ground_path) {
     // dataset root path
-    std::string dataset_root = "/home_bak/yq/ANNS/dataset/";
+    std::string dataset_root = "../../../../../routing_evaluation/dataset/";
     base_path = dataset_root;
     query_path = dataset_root;
     ground_path = dataset_root;
@@ -90,6 +92,11 @@ void set_data_path(std::string dataset, std::string &base_path, std::string &que
         base_path.append(R"(crawl/crawl_base.fvecs)");
         query_path.append(R"(crawl/crawl_query.fvecs)");
         ground_path.append(R"(crawl/crawl_groundtruth.ivecs)");
+
+    }else if (dataset == "deep1M") {
+        base_path.append(R"(deep1M/deep1m_base.fvecs)");
+        query_path.append(R"(deep1M/deep1m_query.fvecs)");
+        ground_path.append(R"(deep1M/deep1m_groundtruth.ivecs)");
 
     }else if (dataset == "msong") {
         base_path.append(R"(msong/msong_base.fvecs)");
