@@ -178,7 +178,7 @@ int main(int argc, char** argv) {
         exit(-1);
     }
     weavess::Parameters parameters;
-    std::string dataset_root = R"(/home_bak/yq/ANNS/dataset/)";
+    std::string dataset_root = R"(../../../dataset/)";
     parameters.set<std::string>("dataset_root", dataset_root);
     parameters.set<unsigned>("n_threads", 16);
     std::string stg(argv[1]);
