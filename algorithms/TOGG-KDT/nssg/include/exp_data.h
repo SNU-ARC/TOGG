@@ -16,7 +16,9 @@ void set_para(std::string dataset, efanna2e::Parameters &parameters) {
     }else if (dataset == "audio") {
         L = 100, R = 50, A = 60;   // nsg
     }else if (dataset == "crawl") {
-        L = 100, R = 50, A = 60;   // nsg
+        L = 500, R = 40, A = 60;   // nsg
+    }else if (dataset == "deep1M") {
+        L = 500, R = 40, A = 60;   // nsg
     }else if (dataset == "msong") {
         L = 100, R = 50, A = 60;   // nsg
     }else if (dataset == "uqv") {
@@ -90,6 +92,11 @@ void set_data_path(std::string dataset, std::string &base_path, std::string &que
         base_path.append(R"(crawl/crawl_base.fvecs)");
         query_path.append(R"(crawl/crawl_query.fvecs)");
         ground_path.append(R"(crawl/crawl_groundtruth.ivecs)");
+
+    }else if (dataset == "deep1M") {
+        base_path.append(R"(deep1M/deep1m_base.fvecs)");
+        query_path.append(R"(deep1M/deep1m_query.fvecs)");
+        ground_path.append(R"(deep1M/deep1m_groundtruth.ivecs)");
 
     }else if (dataset == "msong") {
         base_path.append(R"(msong/msong_base.fvecs)");
