@@ -1717,16 +1717,18 @@ namespace weavess {
         get_range(index->range_);
         
         for (size_t i = 0; i < index->getBaseLen(); i++) {
-            // auto size = index->getFinalGraph()[i].size();
-            auto size = index->getLoadGraph()[i].size();
+            auto size = index->getFinalGraph()[i].size();
+            // auto size = index->getLoadGraph()[i].size();
             long long min_diff =1e6, min_diff_dim = -1;
             for (size_t j = 0; j < index->getBaseDim(); j++) {
             int lnum = 0, rnum = 0;
             for (size_t k = 0; k < size; k++) {
-                if (*(index->getBaseData() + index->getLoadGraph()[i][k] + j) - *(index->getBaseData() + i + j) < -index->r_proportion * index->range_[j]) {
+                if (*(index->getBaseData() + index->getFinalGraph()[i][k].id + j) - *(index->getBaseData() + i + j) < -index->r_proportion * index->range_[j]) {
+                //if (*(index->getBaseData() + index->getLoadGraph()[i][k] + j) - *(index->getBaseData() + i + j) < -index->r_proportion * index->range_[j]) {
                 lnum++;
                 }
-                else if (*(index->getBaseData() + index->getLoadGraph()[i][k] + j) - *(index->getBaseData() + i + j) > index->r_proportion * index->range_[j]) {
+                else if (*(index->getBaseData() + index->getFinalGraph()[i][k].id + j) - *(index->getBaseData() + i + j) > index->r_proportion * index->range_[j]) {
+                //else if (*(index->getBaseData() + index->getLoadGraph()[i][k] + j) - *(index->getBaseData() + i + j) > index->r_proportion * index->range_[j]) {
                 rnum++;
                 }
             }
@@ -1739,14 +1741,19 @@ namespace weavess {
             }
             index->Tn[i].div_dim = min_diff_dim;
             for (size_t k = 0; k < size; k++) {
-            if (*(index->getBaseData() + index->getLoadGraph()[i][k] + min_diff_dim) - *(index->getBaseData() + i + min_diff_dim) < -index->r_proportion * index->range_[min_diff_dim]) {
-                index->Tn[i].left.push_back(index->getLoadGraph()[i][k]);
+            if (*(index->getBaseData() + index->getFinalGraph()[i][k].id + min_diff_dim) - *(index->getBaseData() + i + min_diff_dim) < -index->r_proportion * index->range_[min_diff_dim]) {
+                index->Tn[i].left.push_back(index->getFinalGraph()[i][k].id);
+            //if (*(index->getBaseData() + index->getLoadGraph()[i][k] + min_diff_dim) - *(index->getBaseData() + i + min_diff_dim) < -index->r_proportion * index->range_[min_diff_dim]) {
+            //    index->Tn[i].left.push_back(index->getLoadGraph()[i][k]);
             }
-            else if (*(index->getBaseData() + index->getLoadGraph()[i][k] + min_diff_dim) - *(index->getBaseData() + i + min_diff_dim) >= index->r_proportion * index->range_[min_diff_dim]) {
-                index->Tn[i].right.push_back(index->getLoadGraph()[i][k]);
+            else if (*(index->getBaseData() + index->getFinalGraph()[i][k].id + min_diff_dim) - *(index->getBaseData() + i + min_diff_dim) >= index->r_proportion * index->range_[min_diff_dim]) {
+                index->Tn[i].right.push_back(index->getFinalGraph()[i][k].id);
+            //else if (*(index->getBaseData() + index->getLoadGraph()[i][k] + min_diff_dim) - *(index->getBaseData() + i + min_diff_dim) >= index->r_proportion * index->range_[min_diff_dim]) {
+            //    index->Tn[i].right.push_back(index->getLoadGraph()[i][k]);
             }
             else {
-                index->Tn[i].common.push_back(index->getLoadGraph()[i][k]);
+                index->Tn[i].common.push_back(index->getFinalGraph()[i][k].id);
+                //index->Tn[i].common.push_back(index->getLoadGraph()[i][k]);
             }
             }
         }
@@ -1782,12 +1789,12 @@ namespace weavess {
         index->nc_.resize(index->getBaseLen());
 
         for (size_t i = 0; i < index->getBaseLen(); i++) {
-            // auto size = index->getFinalGraph()[i].size();   // for test
-            auto size = index->getLoadGraph()[i].size();
+            auto size = index->getFinalGraph()[i].size();   // for test
+            //auto size = index->getLoadGraph()[i].size();
             if (size > index->cluster_num) {
                 std::vector <unsigned> tmp_neighbor;
-                // for (size_t j = 0; j < size; j++) tmp_neighbor.push_back(index->getFinalGraph()[i][j].id);
-                for (size_t j = 0; j < size; j++) tmp_neighbor.push_back(index->getLoadGraph()[i][j]);
+                for (size_t j = 0; j < size; j++) tmp_neighbor.push_back(index->getFinalGraph()[i][j].id);
+                //for (size_t j = 0; j < size; j++) tmp_neighbor.push_back(index->getLoadGraph()[i][j]);
                 size_t* labels = new size_t[size];
                 Cluster(tmp_neighbor.data(), size, labels);
                 
@@ -1834,8 +1841,8 @@ namespace weavess {
             else {
                 index->nc_[i].resize(1);
                 for (size_t j = 0; j < size; j++) {
-                    // index->nc_[i][0].push_back(index->getFinalGraph()[i][j].id); // for test
-                    index->nc_[i][0].push_back(index->getLoadGraph()[i][j]);
+                    index->nc_[i][0].push_back(index->getFinalGraph()[i][j].id); // for test
+                    // index->nc_[i][0].push_back(index->getLoadGraph()[i][j]);
                 }
             }
         }

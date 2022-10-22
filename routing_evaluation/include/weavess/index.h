@@ -28,6 +28,8 @@
 // NGT
 #define NGT_SEED_SIZE 5
 
+#include <set>
+#include <map>
 #include <omp.h>
 #include <mutex>
 #include <queue>
