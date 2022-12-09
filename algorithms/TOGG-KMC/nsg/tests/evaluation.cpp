@@ -3,6 +3,7 @@
 #include <efanna2e/exp_data.h>
 #include <chrono>
 #include <string>
+#include <set>
 
 void load_data(char* filename, float*& data, unsigned& num,
                unsigned& dim) {  // load data with sift10K pattern
@@ -123,12 +124,13 @@ int main(int argc, char** argv) {
     index.Load(&graph_file[0]);
     index.OptimizeGraph(data_load);
     unsigned K;
-    std::string L_type("L_SEARCH_ASCEND");
+    std::string L_type("L_SEARCH_ASSIGN");
     if (argc == 4) {
       K = (unsigned)atoi(argv[3]);
       std::cout << "K: " << K << std::endl;
     }else {
-      K = 10;
+      K = (unsigned)atoi(argv[3]);
+//      K = 10;
     }
     if (L_type == "L_SEARCH_ASCEND") {
       unsigned L_st = 1;
@@ -239,8 +241,10 @@ int main(int argc, char** argv) {
       auto e1 = std::chrono::high_resolution_clock::now();
       std::chrono::duration<double> diff = e1 - s1;
       std::cout << "search time: " << diff.count() << "\n";
+      std::cout << "QPS: " << query_num / diff.count() << std::endl;
       size_t DistCount = index.GetDistCount();
       std::cout << "DistCount: " << DistCount << std::endl;
+      std::cout << "Speedup: " << (float)points_num * query_num / DistCount << std::endl; 
       float recall = cal_recall(res, true_data, query_num, K);
       std::cout << K << " NN accuracy: " << recall << std::endl;
     }
