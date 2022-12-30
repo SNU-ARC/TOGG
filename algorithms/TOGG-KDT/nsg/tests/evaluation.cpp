@@ -87,20 +87,34 @@ void get_range(const float* data, unsigned dim, unsigned num, float* &range) {
 }
 
 int main(int argc, char** argv) {
-  if (argc < 3 || argc > 5) {
-    std::cout << "./evaluation dataset exc_type [P] [K] [L]"
+  std::cout << "argc: " << argc << std::endl;
+  if (argc < 4) {
+    std::cout << "./evaluation dataset [sub_id] exc_type [P] [K] [L]"
               << std::endl;
     exit(-1);
+  }  
+  int sub_id = -1;
+  if (argc < 6) {
+    sub_id = (int)atoi(argv[2]);
+    std::cout << "sub_id: " << sub_id << std::endl;
   }
   std::string dataset(argv[1]);
   std::cout << "dataset: " << dataset << std::endl;
-  std::string exc_type(argv[2]);
+  std::string exc_type;
+  if (sub_id == -1)
+    exc_type.assign(argv[2]);
+  else
+    exc_type.assign(argv[3]);
   //set data
   std::string base_path;
   std::string query_path;
   std::string ground_path;
-  set_data_path(dataset, base_path, query_path, ground_path);
-  std::string graph_file("nsg_toggkdt_" + dataset + ".graph");
+  set_data_path(dataset, base_path, query_path, ground_path, sub_id);
+  std::string graph_file;
+  if (sub_id == -1)
+    graph_file.assign("nsg_toggkdt_" + dataset + ".graph");
+  else
+    graph_file.assign("nsg_toggkdt_" + dataset + "_" + std::to_string(sub_id) + ".graph");
 
   float* data_load = NULL;
   unsigned points_num, dim;
@@ -111,13 +125,15 @@ int main(int argc, char** argv) {
   if (exc_type == "build") {
     efanna2e::IndexNSG index(dim, points_num, efanna2e::L2, nullptr);
     efanna2e::Parameters paras;
-    set_para(dataset, paras);
-    if (argc != 4) {
-      std::cout << "./evaluation dataset exc_type [P] [K] [L]"
+    set_para(dataset, paras, sub_id);
+    if (argc < 4) {
+      std::cout << "./evaluation dataset [sub_id] exc_type [P] [K] [L]"
                 << std::endl;
       exit(-1);
     }
-    float P = (float)atof(argv[3]);
+    float P;
+    if (sub_id == -1) P = (float)atof(argv[3]);
+    else P = (float)atof(argv[4]);
     index.Load_range(range);
     index.InitRangeProportion(P);
     std::cout << "P: " << P << std::endl;
