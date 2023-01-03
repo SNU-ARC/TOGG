@@ -1,0 +1,17 @@
+Reading bin file deep100M/deep100M_query.fvecs.bin ...Metadata: #pts = 10000, #dims = 96, aligned_dim = 96...allocating aligned memory, 3840000 bytes...done. Copying data... done.
+ Stat(deep100M/deep100M_groundtruth_12.ivecs.bin) returned: 0
+Opened: deep100M/deep100M_groundtruth_12.ivecs.bin, size: 4000008, cache_size: 4000008
+Reading truthset file deep100M/deep100M_groundtruth_12.ivecs.bin ...
+Metadata: #pts = 10000, #dims = 100...
+Number of frozen points = 0
+Reading bin file deep100M/deep100M_base_12.fvecs.bin ...Metadata: #pts = 6250000, #dims = 96, aligned_dim = 96...allocating aligned memory, 2400000000 bytes...done. Copying data... done.
+Loading vamana index deep100M_12.index.....done. Index has 6250000 nodes and 286004275 out-edges
+..done. Index has 6250000 nodes and 286004275 out-edges
+Index loaded
+  Ls        QPS Mean Latency (mus)   99.9 Latency    Recall@1
+==============================================================================
+  90     1735.24            576.29        2811.95        6.02
+Done searching. Now saving results 
+Writing bin: deep100M_search_L90K1T16_12_baseline_90_idx_uint32.bin
+bin: #pts = 10000, #dims = 1, size = 40008B
+Finished writing bin.

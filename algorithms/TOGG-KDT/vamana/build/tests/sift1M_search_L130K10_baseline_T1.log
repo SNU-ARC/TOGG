@@ -1,0 +1,17 @@
+Reading bin file sift1M/sift_query.fvecs.bin ...Metadata: #pts = 10000, #dims = 128, aligned_dim = 128...allocating aligned memory, 5120000 bytes...done. Copying data... done.
+ Stat(sift1M/sift_groundtruth.ivecs.bin) returned: 0
+Opened: sift1M/sift_groundtruth.ivecs.bin, size: 4000008, cache_size: 4000008
+Reading truthset file sift1M/sift_groundtruth.ivecs.bin ...
+Metadata: #pts = 10000, #dims = 100...
+Number of frozen points = 0
+Reading bin file sift1M/sift_base.fvecs.bin ...Metadata: #pts = 1000000, #dims = 128, aligned_dim = 128...allocating aligned memory, 512000000 bytes...done. Copying data... done.
+Loading vamana index sift1M.index.....done. Index has 1000000 nodes and 40477234 out-edges
+..done. Index has 30 nodes and 43085761 out-edges
+Index loaded
+  Ls        QPS Mean Latency (mus)   99.9 Latency   Recall@10
+==============================================================================
+ 130     1835.70            544.75        1053.49       99.82
+Done searching. Now saving results 
+Writing bin: sift1M_search_L130K10T1_baseline_130_idx_uint32.bin
+bin: #pts = 10000, #dims = 10, size = 400008B
+Finished writing bin.

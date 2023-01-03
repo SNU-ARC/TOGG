@@ -1,0 +1,17 @@
+Reading bin file gist1M/gist_query.fvecs.bin ...Metadata: #pts = 1000, #dims = 960, aligned_dim = 960...allocating aligned memory, 3840000 bytes...done. Copying data... done.
+ Stat(gist1M/gist_groundtruth.ivecs.bin) returned: 0
+Opened: gist1M/gist_groundtruth.ivecs.bin, size: 400008, cache_size: 400008
+Reading truthset file gist1M/gist_groundtruth.ivecs.bin ...
+Metadata: #pts = 1000, #dims = 100...
+Number of frozen points = 0
+Reading bin file gist1M/gist_base.fvecs.bin ...Metadata: #pts = 1000000, #dims = 960, aligned_dim = 960...allocating aligned memory, 3840000000 bytes...done. Copying data... done.
+Loading vamana index gist1M.index.....done. Index has 1000000 nodes and 30632744 out-edges
+..done. Index has 24 nodes and 31825036 out-edges
+Index loaded
+  Ls        QPS Mean Latency (mus)   99.9 Latency    Recall@1
+==============================================================================
+ 200      246.44           4057.78       13072.45       98.30
+Done searching. Now saving results 
+Writing bin: gist1M_search_L200K1T1_baseline_200_idx_uint32.bin
+bin: #pts = 1000, #dims = 1, size = 4008B
+Finished writing bin.
