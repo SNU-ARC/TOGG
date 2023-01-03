@@ -1,2 +1,0 @@
-/usr/bin/ar qc libdiskann_ADA_NNS.a CMakeFiles/diskann_ADA_NNS.dir/ann_exception.cpp.o CMakeFiles/diskann_ADA_NNS.dir/aux_utils.cpp.o CMakeFiles/diskann_ADA_NNS.dir/index.cpp.o CMakeFiles/diskann_ADA_NNS.dir/linux_aligned_file_reader.cpp.o CMakeFiles/diskann_ADA_NNS.dir/math_utils.cpp.o CMakeFiles/diskann_ADA_NNS.dir/memory_mapper.cpp.o CMakeFiles/diskann_ADA_NNS.dir/partition_and_pq.cpp.o CMakeFiles/diskann_ADA_NNS.dir/pq_flash_index.cpp.o CMakeFiles/diskann_ADA_NNS.dir/logger.cpp.o CMakeFiles/diskann_ADA_NNS.dir/utils.cpp.o
-/usr/bin/ranlib libdiskann_ADA_NNS.a
