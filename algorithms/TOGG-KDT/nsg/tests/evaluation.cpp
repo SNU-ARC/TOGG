@@ -3,6 +3,7 @@
 #include <efanna2e/exp_data.h>
 #include <chrono>
 #include <string>
+#include <omp.h>
 
 void load_data(char* filename, float*& data, unsigned& num,
                unsigned& dim) {  // load data with sift10K pattern
@@ -89,32 +90,21 @@ void get_range(const float* data, unsigned dim, unsigned num, float* &range) {
 int main(int argc, char** argv) {
   std::cout << "argc: " << argc << std::endl;
   if (argc < 4) {
-    std::cout << "./evaluation dataset [sub_id] exc_type [P] [K] [L]"
+    std::cout << "./evaluation dataset exc_type [P] [K] [L]"
               << std::endl;
     exit(-1);
   }  
-  int sub_id = -1;
-  if (argc < 6) {
-    sub_id = (int)atoi(argv[2]);
-    std::cout << "sub_id: " << sub_id << std::endl;
-  }
   std::string dataset(argv[1]);
   std::cout << "dataset: " << dataset << std::endl;
   std::string exc_type;
-  if (sub_id == -1)
-    exc_type.assign(argv[2]);
-  else
-    exc_type.assign(argv[3]);
+  exc_type.assign(argv[2]);
   //set data
   std::string base_path;
   std::string query_path;
   std::string ground_path;
-  set_data_path(dataset, base_path, query_path, ground_path, sub_id);
+  set_data_path(dataset, base_path, query_path, ground_path);
   std::string graph_file;
-  if (sub_id == -1)
-    graph_file.assign("nsg_toggkdt_" + dataset + ".graph");
-  else
-    graph_file.assign("nsg_toggkdt_" + dataset + "_" + std::to_string(sub_id) + ".graph");
+  graph_file.assign("nsg_toggkdt_" + dataset + ".graph");
 
   float* data_load = NULL;
   unsigned points_num, dim;
@@ -125,15 +115,14 @@ int main(int argc, char** argv) {
   if (exc_type == "build") {
     efanna2e::IndexNSG index(dim, points_num, efanna2e::L2, nullptr);
     efanna2e::Parameters paras;
-    set_para(dataset, paras, sub_id);
+    set_para(dataset, paras);
     if (argc < 4) {
-      std::cout << "./evaluation dataset [sub_id] exc_type [P] [K] [L]"
+      std::cout << "./evaluation dataset exc_type [P] [K] [L]"
                 << std::endl;
       exit(-1);
     }
     float P;
-    if (sub_id == -1) P = (float)atof(argv[3]);
-    else P = (float)atof(argv[4]);
+    P = (float)atof(argv[3]);
     index.Load_range(range);
     index.InitRangeProportion(P);
     std::cout << "P: " << P << std::endl;
@@ -270,7 +259,9 @@ int main(int argc, char** argv) {
       index.InitDistCount();
       std::vector<std::vector<unsigned> > res(query_num);
       for (unsigned i = 0; i < query_num; i++) res[i].resize(K);
+      omp_set_num_threads(24);
       auto s1 = std::chrono::high_resolution_clock::now();
+#pragma omp parallel for schedule (dynamic, 1)
         for (unsigned i = 0; i < query_num; i++) {
           index.SearchWithOptGraph(query_load + i * dim, K, paras, res[i].data());
         }
