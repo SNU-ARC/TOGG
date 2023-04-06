@@ -68,29 +68,21 @@ void get_range(const float* data, unsigned dim, unsigned num, float* &range) {
 int main(int argc, char** argv) {
   std::cout << "argc: " << argc << std::endl;
   if (argc < 4) {
-    std::cout << "./evaluation dataset [sub_id] exc_type [P] [K] [L]"
+    std::cout << "./evaluation dataset exc_type [P] [K] [L]"
               << std::endl;
     exit(-1);
   }
   
-  int sub_id = -1;
-  if (argc < 6) {
-    sub_id = (int)atoi(argv[2]);
-    std::cout << "sub_id: " << sub_id << std::endl;
-  }
   std::string dataset(argv[1]);
   std::cout << "dataset: " << dataset << std::endl;
-  std::string exc_type(argv[3]);
+  std::string exc_type(argv[2]);
   //set data
   std::string base_path;
   std::string query_path;
   std::string ground_path;
-  set_data_path(dataset, base_path, query_path, ground_path, sub_id);
+  set_data_path(dataset, base_path, query_path, ground_path);
   std::string graph_file;
-  if (argc < 4)
-    graph_file.assign("nssg_toggkdt_" + dataset + ".graph");
-  else
-    graph_file.assign("nssg_toggkdt_" + dataset + "_" + std::to_string(sub_id) + ".graph");
+  graph_file.assign("nssg_toggkdt_" + dataset + ".graph");
 
   float* data_load = NULL;
   unsigned points_num, dim;
@@ -103,15 +95,13 @@ int main(int argc, char** argv) {
     efanna2e::IndexSSG index(dim, points_num, efanna2e::L2,
                            (efanna2e::Index*)(&init_index));
     efanna2e::Parameters paras;
-    set_para(dataset, paras, sub_id);
     if (argc < 4) {
-      std::cout << "./evaluation dataset [sub_id] exc_type [P] [K] [L]"
+      std::cout << "./evaluation dataset exc_type [P] [K] [L]"
                 << std::endl;
       exit(-1);
     }
     double P;
-    if (argc == 4) P = (double)atof(argv[3]);
-    else P = (double)atof(argv[4]);
+    P = (double)atof(argv[3]);
     P = pow(P, 2.0);
     std::cout << "P: " << P << std::endl;
     index.Load_range(range);
@@ -143,13 +133,9 @@ int main(int argc, char** argv) {
     index.OptimizeGraph(data_load);
     unsigned K;
     std::string L_type("L_SEARCH_ASSIGN");
-    if (argc == 4) {
-      K = (unsigned)atoi(argv[3]);
-      std::cout << "K: " << K << std::endl;
-    }else {
-      K = (unsigned)atoi(argv[4]);
-//      K = 10;
-    }
+    K = (unsigned)atoi(argv[3]);
+    std::cout << "K: " << K << std::endl;
+
     if (L_type == "L_SEARCH_ASCEND") {
       unsigned L_st = 1;
       unsigned L_st2 = K;

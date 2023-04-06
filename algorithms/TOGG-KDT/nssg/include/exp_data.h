@@ -3,7 +3,7 @@
 #include <string.h>
 #include <iostream>
 
-void set_para(std::string dataset, efanna2e::Parameters &parameters, const int sub_id) {
+void set_para(std::string dataset, efanna2e::Parameters &parameters) {
     unsigned L, R, A;
     if (dataset == "siftsmall") {
         L = 100, R = 50, A = 60;   // nsg
@@ -50,10 +50,7 @@ void set_para(std::string dataset, efanna2e::Parameters &parameters, const int s
         exit(-1);
     }
     std::string nn_graph_path;
-    if (sub_id == -1)
-      nn_graph_path.assign("../../../../GA/efanna_graph/build/tests/" + dataset + "_knn.graph");
-    else
-      nn_graph_path.assign("../../../../GA/efanna_graph/build/tests/" + dataset + "_knn_" + std::to_string(sub_id) + ".graph");
+    nn_graph_path.assign("../../../../GA/efanna_graph/build/tests/" + dataset + "_knn.graph");
     parameters.Set<unsigned>("L", L);
     parameters.Set<unsigned>("R", R);
     parameters.Set<unsigned>("A", A);
@@ -61,7 +58,7 @@ void set_para(std::string dataset, efanna2e::Parameters &parameters, const int s
     parameters.Set<std::string>("nn_graph_path", nn_graph_path);
 }
 
-void set_data_path(std::string dataset, std::string &base_path, std::string &query_path, std::string &ground_path, const int sub_id) {
+void set_data_path(std::string dataset, std::string &base_path, std::string &query_path, std::string &ground_path) {
     // dataset root path
     std::string dataset_root = "../../../../../routing_evaluation/dataset/";
     base_path = dataset_root;
@@ -103,14 +100,7 @@ void set_data_path(std::string dataset, std::string &base_path, std::string &que
         ground_path.append(R"(deep1M/deep1m_groundtruth.ivecs)");
 
     }else if (dataset == "deep100M") {
-        if (sub_id == -1)
-          base_path.append(R"(deep100M/deep100M_base.fvecs)");
-        else {
-          base_path.append(R"(deep100M/deep100M_base_)");
-          base_path.append(std::to_string(sub_id));
-          base_path.append(R"(.fvecs)");
-        }
-        std::cout << "base_path: " << base_path << std::endl;
+        base_path.append(R"(deep100M/deep100M_base.fvecs)");
         query_path.append(R"(deep100M/deep100M_query.fvecs)");
         ground_path.append(R"(deep100M/deep100M_groundtruth.ivecs)");
 
