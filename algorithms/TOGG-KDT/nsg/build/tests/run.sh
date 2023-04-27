@@ -35,7 +35,7 @@ sift1M() {
   fi
 
   # Perform search
-  echo "Perform kNN searching using SSG index (sift1M_L${1}K${2}T${4})"
+  echo "Perform kNN searching using TOGG-KDT NSG index (sift1M_L${1}K${2}T${4})"
   sudo sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"
   ./evaluation sift1M search ${2} ${1} > sift1M_search_L${1}_K${2}_T${3}.log
 }
@@ -48,7 +48,7 @@ gist() {
   fi
 
   # Perform search
-  echo "Perform kNN searching using SSG index (gist_L${1}K${2}T${4})"
+  echo "Perform kNN searching using TOGG-KDT NSG index (gist_L${1}K${2}T${4})"
   sudo sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"
   ./evaluation gist search ${2} ${1} > gist_search_L${1}_K${2}_T${3}.log
 }
@@ -61,7 +61,7 @@ crawl() {
   fi
 
   # Perform search
-  echo "Perform kNN searching using SSG index (crawl_L${1}K${2}T${4})"
+  echo "Perform kNN searching using TOGG-KDT NSG index (crawl_L${1}K${2}T${4})"
   sudo sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"
   ./evaluation crawl search ${2} ${1} > crawl_search_L${1}_K${2}_T${3}.log
 }
@@ -74,7 +74,7 @@ deep1M() {
   fi
 
   # Perform search
-  echo "Perform kNN searching using SSG index (deep1M_L${1}K${2}T${4})"
+  echo "Perform kNN searching using TOGG-KDT NSG index (deep1M_L${1}K${2}T${4})"
   sudo sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"
   ./evaluation deep1M search ${2} ${1} > deep1M_search_L${1}_K${2}_T${3}.log
 }
@@ -87,7 +87,7 @@ msong() {
   fi
 
   # Perform search
-  echo "Perform kNN searching using SSG index (msong_L${1}K${2}T${4})"
+  echo "Perform kNN searching using TOGG-KDT NSG index (msong_L${1}K${2}T${4})"
   sudo sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"
   ./evaluation msong search ${2} ${1} > msong_search_L${1}_K${2}_T${3}.log
 }
@@ -100,7 +100,7 @@ glove-100() {
   fi
 
   # Perform search
-  echo "Perform kNN searching using SSG index (glove-100_L${1}K${2}T${4})"
+  echo "Perform kNN searching using TOGG-KDT NSG index (glove-100_L${1}K${2}T${4})"
   sudo sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"
   ./evaluation glove-100 search ${2} ${1} > glove-100_search_L${1}_K${2}_T${3}.log
 }
@@ -113,7 +113,7 @@ deep100M() {
   fi
 
   # Perform search
-  echo "Perform kNN searching using SSG index (deep100M_L${1}K${2}T${4})"
+  echo "Perform kNN searching using TOGG-KDT NSG index (deep100M_L${1}K${2}T${4})"
   sudo sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"
   ./evaluation deep100M search ${2} ${1} > deep100M_search_L${1}_K${2}_T${3}.log
 }
