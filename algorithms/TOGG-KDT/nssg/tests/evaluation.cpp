@@ -95,6 +95,7 @@ int main(int argc, char** argv) {
     efanna2e::IndexSSG index(dim, points_num, efanna2e::L2,
                            (efanna2e::Index*)(&init_index));
     efanna2e::Parameters paras;
+    set_para(dataset, paras);
     if (argc < 4) {
       std::cout << "./evaluation dataset exc_type [P] [K] [L]"
                 << std::endl;
