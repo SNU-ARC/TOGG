@@ -188,7 +188,7 @@ vamana_msong() {
   # Build proximity graph
   if [ ! -f "msong.index" ]; then
     echo "Generating Vamana index"
-    ./build_memory_index float l2 msong/msong_base.fvecs.bin msong.index 70 75 1.2 ${MAX_THREADS} # [L] [R] [alpha] [num_threads]
+    ./build_memory_index float l2 msong/msong_base.fvecs.bin msong.index 30 40 2 ${MAX_THREADS} # [L] [R] [alpha] [num_threads]
   fi
 
   # Perform search
