@@ -29,8 +29,8 @@ K=(1 10)
 
 sift1M() {
   # Build a proximity graph
-  if [ ! -f "nsg_toggkdt_sift1M.graph" ]; then
-    echo "Build nsg_toggkdt_sift1M.graph"
+  if [ ! -f "nsg_toggkmc_sift1M.graph" ]; then
+    echo "Build nsg_toggkmc_sift1M.graph"
     ./evaluation sift1M build 4
   fi
 
@@ -42,8 +42,8 @@ sift1M() {
 
 gist() {
   # Build a proximity graph
-  if [ ! -f "nsg_toggkdt_gist.graph" ]; then
-    echo "Build nsg_toggkdt_gist.graph"
+  if [ ! -f "nsg_toggkmc_gist.graph" ]; then
+    echo "Build nsg_toggkmc_gist.graph"
     ./evaluation gist build 4
   fi
 
@@ -55,8 +55,8 @@ gist() {
 
 crawl() {
   # Build a proximity graph
-  if [ ! -f "nsg_toggkdt_crawl.graph" ]; then
-    echo "Build nsg_toggkdt_crawl.graph"
+  if [ ! -f "nsg_toggkmc_crawl.graph" ]; then
+    echo "Build nsg_toggkmc_crawl.graph"
     ./evaluation crawl build 4
   fi
 
@@ -68,8 +68,8 @@ crawl() {
 
 deep1M() {
   # Build a proximity graph
-  if [ ! -f "nsg_toggkdt_deep1M.graph" ]; then
-    echo "Build nsg_toggkdt_deep1M.graph"
+  if [ ! -f "nsg_toggkmc_deep1M.graph" ]; then
+    echo "Build nsg_toggkmc_deep1M.graph"
     ./evaluation deep1M build 4
   fi
 
@@ -81,8 +81,8 @@ deep1M() {
 
 msong() {
   # Build a proximity graph
-  if [ ! -f "nsg_toggkdt_msong.graph" ]; then
-    echo "Build nsg_toggkdt_msong.graph"
+  if [ ! -f "nsg_toggkmc_msong.graph" ]; then
+    echo "Build nsg_toggkmc_msong.graph"
     ./evaluation msong build 4
   fi
 
@@ -94,8 +94,8 @@ msong() {
 
 glove-100() {
   # Build a proximity graph
-  if [ ! -f "nsg_toggkdt_glove-100.graph" ]; then
-    echo "Build nsg_toggkdt_glove-100.graph"
+  if [ ! -f "nsg_toggkmc_glove-100.graph" ]; then
+    echo "Build nsg_toggkmc_glove-100.graph"
     ./evaluation glove-100 build 4
   fi
 
@@ -107,8 +107,8 @@ glove-100() {
 
 deep100M() {
   # Build a proximity graph
-  if [ ! -f "nsg_toggkdt_deep100M.graph" ]; then
-    echo "Build nsg_toggkdt_deep100M.graph"
+  if [ ! -f "nsg_toggkmc_deep100M.graph" ]; then
+    echo "Build nsg_toggkmc_deep100M.graph"
     ./evaluation deep100M build 4
   fi
 
