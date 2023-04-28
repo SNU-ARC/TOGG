@@ -415,6 +415,8 @@ if [[ ${#} -eq 1 ]]; then
   else
     echo "Usage: ./evaluate_baseline.sh [dataset]"
   fi
+elif [[ ${#} -eq 4 ]]; then
+  vamana_$1 $2 $3 $4
 else
   echo "Usage: ./evaluate_baseline.sh [dataset]"
 fi
