@@ -1,11 +1,34 @@
 #!/bin/bash
 export TIME=$(date '+%Y%m%d%H%M')
 MAX_THREADS=`nproc --all`
+
+l_start=20
+l_end=200
+l_step=10
+
+for (( l=l_start; l<=l_end; l=l+l_step )); do
+	L_SIZE+=($l)
+done
+
+l_start=250
+l_end=500
+l_step=50
+
+for (( l=l_start; l<=l_end; l=l+l_step )); do
+	L_SIZE+=($l)
+done
+
+l_start=1000
+l_end=2500
+l_step=500
+
+for (( l=l_start; l<=l_end; l=l+l_step )); do
+	L_SIZE+=($l)
+done
+
 THREAD=(1)
-#K=(1) 
-#L_SIZE=(10)
-K=(10) 
-L_SIZE=(10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 250 300 350 400 450 500)
+K=(1 10)
+
 
 vamana_sift1M() {
   # Convert base set, query set, groundtruth set to Vamana format
