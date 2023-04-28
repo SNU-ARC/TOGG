@@ -2,6 +2,7 @@
 #include "index_ssg.h"
 #include "util.h"
 #include "exp_data.h"
+#include <set>
 
 void load_data(char* filename, float*& data, unsigned& num,
                unsigned& dim) {  // load data with sift10K pattern
