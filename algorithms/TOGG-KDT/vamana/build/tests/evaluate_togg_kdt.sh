@@ -51,10 +51,10 @@ vamana_sift1M() {
   fi
 
   # Perform search
-  echo "Perform searching using Vamana index (sift1M_L${1}K${2}T${4})"
+  echo "Perform searching using Vamana index (sift1M_L${1}_K${2}_T${3})"
   sudo sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"
-  ./search_memory_index float fast_l2 sift1M/sift_base.fvecs.bin sift1M.index ${4} sift1M/sift_query.fvecs.bin \
-    sift1M/sift_groundtruth.ivecs.bin ${2} sift1M_search_${3}_L${1}_K${2}_T${4} ${1} > sift1M_search_${3}_L${1}_K${2}_T${4}.log 
+  ./search_memory_index float fast_l2 sift1M/sift_base.fvecs.bin sift1M.index ${3} sift1M/sift_query.fvecs.bin \
+    sift1M/sift_groundtruth.ivecs.bin ${2} sift1M_search_L${1}_K${2}_T${3} ${1} > sift1M_search_L${1}_K${2}_T${3}.log 
 }
 
 vamana_gist1M() {
@@ -79,10 +79,10 @@ vamana_gist1M() {
   fi
 
   # Perform search
-  echo "Perform searching using Vamana index (gist1M_L${1}K${2}T${4})"
+  echo "Perform searching using Vamana index (gist1M_L${1}_K${2}_T${3})"
   sudo sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"
-  ./search_memory_index float fast_l2 gist1M/gist_base.fvecs.bin gist1M.index ${4} gist1M/gist_query.fvecs.bin \
-    gist1M/gist_groundtruth.ivecs.bin ${2} gist1M_search_${3}_L${1}_K${2}_T${4} ${1}   > gist1M_search_${3}_L${1}_K${2}_T${4}.log 
+  ./search_memory_index float fast_l2 gist1M/gist_base.fvecs.bin gist1M.index ${3} gist1M/gist_query.fvecs.bin \
+    gist1M/gist_groundtruth.ivecs.bin ${2} gist1M_search_L${1}_K${2}_T${3} ${1}   > gist1M_search_L${1}_K${2}_T${3}.log 
 }
 
 vamana_crawl() {
@@ -107,10 +107,10 @@ vamana_crawl() {
   fi
 
   # Perform search
-  echo "Perform searching using Vamana index (crawl_L${1}K${2}T${4})"
+  echo "Perform searching using Vamana index (crawl_L${1}_K${2}_T${3})"
   sudo sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"
-  ./search_memory_index float fast_l2 crawl/crawl_base.fvecs.bin crawl.index ${4} crawl/crawl_query.fvecs.bin \
-    crawl/crawl_groundtruth.ivecs.bin ${2} crawl_search_${3}_L${1}_K${2}_T${4} ${1}   > crawl_search_${3}_L${1}_K${2}_T${4}.log 
+  ./search_memory_index float fast_l2 crawl/crawl_base.fvecs.bin crawl.index ${3} crawl/crawl_query.fvecs.bin \
+    crawl/crawl_groundtruth.ivecs.bin ${2} crawl_search_L${1}_K${2}_T${3} ${1}   > crawl_search_L${1}_K${2}_T${3}.log 
 }
 
 vamana_deep1M() {
@@ -135,10 +135,10 @@ vamana_deep1M() {
   fi
 
   # Perform search
-  echo "Perform searching using Vamana index (deep1M_L${1}K${2}T${4})"
+  echo "Perform searching using Vamana index (deep1M_L${1}_K${2}_T${3})"
   sudo sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"
-  ./search_memory_index float fast_l2 deep1M/deep1m_base.fvecs.bin deep1M.index ${4} deep1M/deep1m_query.fvecs.bin \
-    deep1M/deep1m_groundtruth.ivecs.bin ${2} deep1M_search_${3}_L${1}_K${2}_T${4} ${1} > deep1M_search_${3}_L${1}_K${2}_T${4}.log 
+  ./search_memory_index float fast_l2 deep1M/deep1m_base.fvecs.bin deep1M.index ${3} deep1M/deep1m_query.fvecs.bin \
+    deep1M/deep1m_groundtruth.ivecs.bin ${2} deep1M_search_L${1}_K${2}_T${3} ${1} > deep1M_search_L${1}_K${2}_T${3}.log 
 }
 
 vamana_msong() {
@@ -163,10 +163,10 @@ vamana_msong() {
   fi
 
   # Perform search
-  echo "Perform searching using Vamana index (msong_L${1}K${2}T${4})"
+  echo "Perform searching using Vamana index (msong_L${1}_K${2}_T${3})"
   sudo sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"
-  ./search_memory_index float fast_l2 msong/msong_base.fvecs.bin msong.index ${4} msong/msong_query.fvecs.bin \
-    msong/msong_groundtruth.ivecs.bin ${2} msong_search_${3}_L${1}_K${2}_T${4} ${1}   > msong_search_${3}_L${1}_K${2}_T${4}.log 
+  ./search_memory_index float fast_l2 msong/msong_base.fvecs.bin msong.index ${3} msong/msong_query.fvecs.bin \
+    msong/msong_groundtruth.ivecs.bin ${2} msong_search_L${1}_K${2}_T${3} ${1}   > msong_search_L${1}_K${2}_T${3}.log 
 }
 
 vamana_glove-100() {
@@ -191,10 +191,10 @@ vamana_glove-100() {
   fi
 
   # Perform search
-  echo "Perform searching using Vamana index (glove-100_L${1}K${2}T${4})"
+  echo "Perform searching using Vamana index (glove-100_L${1}_K${2}_T${3})"
   sudo sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"
-  ./search_memory_index float fast_l2 glove-100/glove-100_base.fvecs.bin glove-100.index ${4} glove-100/glove-100_query.fvecs.bin \
-    glove-100/glove-100_groundtruth.ivecs.bin ${2} glove-100_search_${3}_L${1}_K${2}_T${4} ${1} > glove-100_search_${3}_L${1}_K${2}_T${4}.log 
+  ./search_memory_index float fast_l2 glove-100/glove-100_base.fvecs.bin glove-100.index ${3} glove-100/glove-100_query.fvecs.bin \
+    glove-100/glove-100_groundtruth.ivecs.bin ${2} glove-100_search_L${1}_K${2}_T${3} ${1} > glove-100_search_L${1}_K${2}_T${3}.log 
 }
 
 vamana_deep100M() {
@@ -219,11 +219,11 @@ vamana_deep100M() {
   fi
 
   # Perform search
-  echo "Perform searching using Vamana index (deep100M_L${1}K${2}T${4})"
+  echo "Perform searching using Vamana index (deep100M_L${1}_K${2}_T${3})"
   sudo sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"
-  ./search_memory_index float fast_l2 deep100M/deep100M_base.fvecs.bin deep100M.index ${4} deep100M/deep100M_query.fvecs.bin \
-    deep100M/deep100M_groundtruth.ivecs.bin ${2} deep100M_search_${3}_L${1}_K${2}_T${4} ${1} > \
-    deep100M_search_${3}_L${1}_K${2}_T${4}.log 
+  ./search_memory_index float fast_l2 deep100M/deep100M_base.fvecs.bin deep100M.index ${3} deep100M/deep100M_query.fvecs.bin \
+    deep100M/deep100M_groundtruth.ivecs.bin ${2} deep100M_search_L${1}_K${2}_T${3} ${1} > \
+    deep100M_search_L${1}_K${2}_T${3}.log 
 }
 
 vamana_deep100M_16T() {
@@ -249,23 +249,23 @@ vamana_deep100M_16T() {
       ./build_memory_index float l2 deep100M/deep100M_base_${id}.fvecs.bin deep100M_${id}.index 70 75 1.2 ${MAX_THREADS} # [R] [L] [alpha] [num_threads]4
     fi
   done
-  echo "Perform searching using Vamana index (deep100M_L${1}K${2}T${4})"
+  echo "Perform searching using Vamana index (deep100M_L${1}_K${2}_T${3})"
 
   # Perform search
   sudo sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"
   for id in ${sub_num[@]}; do
-    ./search_memory_index float fast_l2 deep100M/deep100M_base_${id}.fvecs.bin deep100M_${id}.index ${4} deep100M/deep100M_query.fvecs.bin \
-      deep100M/deep100M_groundtruth_${id}.ivecs.bin ${2} deep100M_search_L${1}K${2}T${4}_${id}_${3} ${1} > \
-      deep100M_search_L${1}K${2}_${3}_T${4}_${id}.log &
+    ./search_memory_index float fast_l2 deep100M/deep100M_base_${id}.fvecs.bin deep100M_${id}.index ${3} deep100M/deep100M_query.fvecs.bin \
+      deep100M/deep100M_groundtruth_${id}.ivecs.bin ${2} deep100M_search_L${1}_K${2}_T${3}_${id}_${3} ${1} > \
+      deep100M_search_L${1}_K${2}_T${3}_${id}.log &
   done
   wait
-  rm -rf deep100M_search_${3}_L${1}_K${2}_T${4}.log
-  awk 'NR==10{ print; exit }' deep100M_search_L${1}K${2}_${3}_T${4}_0.log >> deep100M_search_${3}_L${1}_K${2}_T${4}.log
-  awk 'NR==11{ print; exit }' deep100M_search_L${1}K${2}_${3}_T${4}_0.log >> deep100M_search_${3}_L${1}_K${2}_T${4}.log
+  rm -rf deep100M_search_L${1}_K${2}_T${3}.log
+  awk 'NR==10{ print; exit }' deep100M_search_L${1}_K${2}_T${3}_0.log >> deep100M_search_L${1}_K${2}_T${3}.log
+  awk 'NR==11{ print; exit }' deep100M_search_L${1}_K${2}_T${3}_0.log >> deep100M_search_L${1}_K${2}_T${3}.log
   for id in ${sub_num[@]}; do
-    awk 'NR==12{ print $0; exit }' deep100M_search_L${1}K${2}_${3}_T${4}_${id}.log >> deep100M_search_${3}_L${1}_K${2}_T${4}.log
+    awk 'NR==12{ print $0; exit }' deep100M_search_L${1}_K${2}_T${3}_${id}.log >> deep100M_search_L${1}_K${2}_T${3}.log
   done
-  cat deep100M_search_${3}_L${1}_K${2}_T${4}.log | awk '{sum += $5;} {if(NR==3) min = $2} {if($2 < min) min = $2} END { print "min_qps: " min; print "recall: " sum; }' >> deep100M_search_${3}_L${1}_K${2}_T${4}.log 
+  cat deep100M_search_L${1}_K${2}_T${3}.log | awk '{sum += $5;} {if(NR==3) min = $2} {if($2 < min) min = $2} END { print "min_qps: " min; print "recall: " sum; }' >> deep100M_search_L${1}_K${2}_T${3}.log 
 }
 
 
@@ -275,7 +275,7 @@ if [[ ${#} -eq 1 ]]; then
       for l_size in ${L_SIZE[@]}; do
         declare -i l=l_size
         for t in ${THREAD[@]}; do
-          vamana_sift1M ${l} ${k} baseline ${t}
+          vamana_sift1M ${l} ${k} ${t}
         done
       done
     done
@@ -284,7 +284,7 @@ if [[ ${#} -eq 1 ]]; then
       for l_size in ${L_SIZE[@]}; do
         declare -i l=l_size
         for t in ${THREAD[@]}; do
-          vamana_gist1M ${l} ${k} baseline ${t}
+          vamana_gist1M ${l} ${k} ${t}
         done
       done
     done
@@ -293,7 +293,7 @@ if [[ ${#} -eq 1 ]]; then
       for l_size in ${L_SIZE[@]}; do
         declare -i l=l_size
         for t in ${THREAD[@]}; do
-          vamana_crawl ${l} ${k} baseline ${t}
+          vamana_crawl ${l} ${k} ${t}
         done
       done
     done
@@ -302,7 +302,7 @@ if [[ ${#} -eq 1 ]]; then
       for l_size in ${L_SIZE[@]}; do
         declare -i l=l_size
         for t in ${THREAD[@]}; do
-          vamana_deep1M ${l} ${k} baseline ${t}
+          vamana_deep1M ${l} ${k} ${t}
         done
       done
     done
@@ -311,7 +311,7 @@ if [[ ${#} -eq 1 ]]; then
       for l_size in ${L_SIZE[@]}; do
         declare -i l=l_size
         for t in ${THREAD[@]}; do
-          vamana_msong ${l} ${k} baseline ${t}
+          vamana_msong ${l} ${k} ${t}
         done
       done
     done
@@ -320,7 +320,7 @@ if [[ ${#} -eq 1 ]]; then
       for l_size in ${L_SIZE[@]}; do
         declare -i l=l_size
         for t in ${THREAD[@]}; do
-          vamana_glove-100 ${l} ${k} baseline ${t}
+          vamana_glove-100 ${l} ${k} ${t}
         done
       done
     done
@@ -329,7 +329,7 @@ if [[ ${#} -eq 1 ]]; then
       for l_size in ${L_SIZE[@]}; do
         declare -i l=l_size
         for t in ${THREAD[@]}; do
-          vamana_deep100M ${l} ${k} baseline ${t}
+          vamana_deep100M ${l} ${k} ${t}
         done
       done
     done
@@ -338,7 +338,7 @@ if [[ ${#} -eq 1 ]]; then
       for l_size in ${L_SIZE[@]}; do
         declare -i l=l_size
         for t in ${THREAD[@]}; do
-          vamana_deep100M_16T ${l} ${k} baseline ${t}
+          vamana_deep100M_16T ${l} ${k} ${t}
         done
       done
     done
@@ -347,13 +347,13 @@ if [[ ${#} -eq 1 ]]; then
       for t in ${THREAD[@]}; do
         for l_size in ${L_SIZE[@]}; do
           declare -i l=l_size
-          vamana_sift1M ${l} ${k} baseline ${t}
-          vamana_gist1M ${l} ${k} baseline ${t}
-          vamana_crawl ${l} ${k} baseline ${t}
-          vamana_deep1M ${l} ${k} baseline ${t}
-          vamana_msong ${l} ${k} baseline ${t}
-          vamana_glove-100 ${l} ${k} baseline ${t}
-          vamana_deep100M ${l} ${k} baseline ${t}
+          vamana_sift1M ${l} ${k} ${t}
+          vamana_gist1M ${l} ${k} ${t}
+          vamana_crawl ${l} ${k} ${t}
+          vamana_deep1M ${l} ${k} ${t}
+          vamana_msong ${l} ${k} ${t}
+          vamana_glove-100 ${l} ${k} ${t}
+          vamana_deep100M ${l} ${k} ${t}
         done
       done
     done
@@ -361,7 +361,7 @@ if [[ ${#} -eq 1 ]]; then
     echo "Usage: ./evaluate_baseline.sh [dataset]"
   fi
 elif [[ ${#} -eq 4 ]]; then
-  vamana_$1 $2 $3 baseline $4
+  vamana_$1 $2 $3 $4
 else
   echo "Usage: ./evaluate_baseline.sh [dataset]"
 fi
