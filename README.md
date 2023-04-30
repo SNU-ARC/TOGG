@@ -44,7 +44,9 @@ To evaluate TOGG-KDT/TOGG-KMC, an NSG/NSSG/VAMANA index must be built first. Her
 
 Firstly, we need to prepare a kNN graph.
 
-NSG/NSSG/VAMANA suggests to use [efanna\_graph](https://github.com/ZJULearning/efanna\_graph) to build this kNN graph. We provide the script to build kNN graphs for various datasets. Please refer to [efanna\_graph](https://github.com/SNU-ARC/efanna\_graph) and checkout `ADA-NNS` branch.
+NSG/NSSG/VAMANA suggests to use [efanna\_graph](https://github.com/ZJULearning/efanna\_graph) to build this kNN graph. 
+
+We provide the script to build kNN graphs for various datasets. Please refer to [efanna\_graph](https://github.com/SNU-ARC/efanna\_graph) and checkout `ADA-NNS` branch.
 
 You can also use any alternatives, such as [Faiss](https://github.com/facebookresearch/faiss).
 
@@ -63,7 +65,7 @@ And we set the parameter P to 1 and CN to 4.
 To use the greedy search, use the `run.sh` script:
 ```shell
 $ cd tests/
-$ ./run.sh [dataset]
+$ ./evaluate.sh [dataset] (e.g., evaluate.sh sift1M, evaluate.sh all)
 ```
 The argument is as follows:
 
