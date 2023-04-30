@@ -62,7 +62,7 @@ And we set the parameter P to 1 and CN to 4.
 
 ### Searching with NSG/NSSG/VAMANA Index
 
-To use the greedy search, use the `run.sh` script:
+To use the greedy search, use the `evaluate.sh` script:
 ```shell
 $ cd tests/
 $ ./evaluate.sh [dataset] (e.g., evaluate.sh sift1M, evaluate.sh all)
@@ -71,5 +71,5 @@ The argument is as follows:
 
 (i) dataset: Name of the dataset. The script supports various real datasets (e.g., SIFT1M, GIST1M, CRAWL, DEEP1M, DEEP100M, MSONG, GLOVE-100).
 
-To change parameter for search (e.g., K, L, number of threads), open `run.sh` and modify the parameter `K, L_SIZE, THREAD`.
+To change parameter for search (e.g., K, L, number of threads), open `evaluate.sh` and modify the parameter `K, L_SIZE, THREAD`.
 
