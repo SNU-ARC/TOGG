@@ -3,6 +3,7 @@
 #include "util.h"
 #include "exp_data.h"
 #include <set>
+#include <omp.h>
 
 void load_data(char* filename, float*& data, unsigned& num,
                unsigned& dim) {  // load data with sift10K pattern
@@ -69,8 +70,8 @@ void load_ivecs_data(const char* filename, std::vector<std::vector<unsigned> >& 
 }
 
 int main(int argc, char** argv) {
-  if (argc < 3 || argc > 5) {
-    std::cout << "./evaluation dataset exc_type [CN] [K] [L]"
+  if (argc < 3 || argc > 6) {
+    std::cout << "./evaluation dataset exc_type [L] [K] [thread_num]"
               << std::endl;
     exit(-1);
   }
@@ -228,8 +229,11 @@ int main(int argc, char** argv) {
     }
     else if (L_type == "L_SEARCH_ASSIGN") {
       unsigned L = (unsigned)atoi(argv[4]);
+      unsigned num_threads = atoi(argv[5]);
+      omp_set_num_threads(num_threads);
       paras.Set<unsigned>("L_search", L);
       std::cout << "SEARCH_L : " << L << std::endl;
+      std::cout << "THREAD_NUM : " << num_threads << std::endl;
       if (L < K) {
         std::cout << "search_L cannot be smaller than search_K! " << std::endl;
         exit(-1);
@@ -238,6 +242,7 @@ int main(int argc, char** argv) {
       std::vector<std::vector<unsigned> > res(query_num);
       for (unsigned i = 0; i < query_num; i++) res[i].resize(K);
       auto s1 = std::chrono::high_resolution_clock::now();
+#pragma omp parallel for schedule(dynamic, 1)
         for (unsigned i = 0; i < query_num; i++) {
           index.SearchWithOptGraph(query_load + i * dim, K, paras, res[i].data());
         }
