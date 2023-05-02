@@ -50,6 +50,10 @@ We provide the script to build kNN graphs for various datasets. Please refer to 
 
 You can also use any alternatives, such as [Faiss](https://github.com/facebookresearch/faiss).
 
+The built graphs should be located in the directory `TOGG/algorithms/GA/efanna_graph/build/tests/.` as the following format.
+
+e.g., `sift1M_knn.graph`, `deep1M_knn.graph`
+ 
 #### Step 2. Build NSG/NSSG/VAMANA index and search via NSG/NSSG/VAMANA index
 
 Secondly, we will convert the kNN graph to NSG/NSSG/VAMANA index and perform search.
@@ -62,10 +66,14 @@ And we set the parameter P to 1 and CN to 4.
 
 ### Searching with NSG/NSSG/VAMANA Index
 
+Dataset should be located in the directory `TOGG/routing_evaluation/dataset/.` as the following format.
+
+e.g., `sift1M`, `deep1M`
+
 To use the greedy search, use the `evaluate.sh` script:
 ```shell
 $ cd tests/
-$ ./evaluate.sh [dataset] (e.g., evaluate.sh sift1M, evaluate.sh all)
+$ ./evaluate.sh [dataset] (e.g., `./evaluate.sh sift1M`, `./evaluate.sh all`)
 ```
 The argument is as follows:
 
